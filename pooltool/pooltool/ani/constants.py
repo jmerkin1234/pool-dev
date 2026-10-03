@@ -1,0 +1,58 @@
+#! /usr/bin/env python
+
+from __future__ import annotations
+
+from pathlib import Path
+
+import pooltool
+from pooltool.utils import panda_path
+
+menu_text_scale = 0.07
+menu_text_scale_small = 0.04
+zoom_sensitivity = 0.3
+min_camera = 2
+max_english = 6 / 10
+power_sensitivity = 2
+elevate_sensitivity = 13
+english_sensitivity = 0.1
+rotate_sensitivity_x = 19
+rotate_sensitivity_y = 5
+rotate_fine_sensitivity_x = 2
+rotate_fine_sensitivity_y = 0
+fine_aim_step = 0.1  # degrees per mouse-wheel notch
+move_sensitivity = 0.6
+stroke_sensitivity = 0.4
+min_stroke_speed = 0.05  # m/s
+# V0 is the cue-tip impact speed. With the cue/ball masses used by the physical
+# strike model, 4 m/s produces roughly a 6 m/s cue-ball launch, which is already
+# a hard real-world break. The old 7 m/s cap could launch the cue ball above normal
+# pool-break speeds.
+max_stroke_speed = 4.0  # m/s
+# max backstroke length, as fraction of cue stick length
+backstroke_fraction = 0.5
+# max masse angle
+max_elevate = 89.9
+# number of seconds that camera rotation is disabled when shot is being calculated
+rotate_downtime = 0.3
+
+ball_highlight = {
+    "ball_offset": 0.12,
+    "ball_amplitude": 0.03,
+    "ball_frequency": 4,
+    "ball_factor": 1.3,
+    "shadow_alpha_offset": 0.27,
+    "shadow_alpha_amplitude": 0.07,
+    "shadow_scale_offset": 2.2,
+    "shadow_scale_amplitude": 0.4,
+}
+
+model_dir: Path = Path(pooltool.__file__).parent / "models"
+
+logo_dir = Path(pooltool.__file__).parent / "logo"
+logo_paths = {
+    "default": panda_path(logo_dir / "logo.png"),
+    "small": panda_path(logo_dir / "logo_small.png"),
+    "smaller": panda_path(logo_dir / "logo_smaller.png"),
+    "pt": panda_path(logo_dir / "logo_pt.png"),
+    "pt_smaller": panda_path(logo_dir / "logo_pt_smaller.png"),
+}
